@@ -9,8 +9,8 @@ from picar_4wd.pwm import PWM
 
 theta_step = 6
 grid_size = (100, 100)
-servo_min_angle = -60
-servo_max_angle = 60
+servo_min_angle = -90
+servo_max_angle = 90
 car_start_cordinates = (59, 0)
 
 def set_grid(grid,x,y):
@@ -43,7 +43,7 @@ def get_mapping():
             
             if x == x0:
                 x1 = x0
-                for _dy in range(0, abs(y-y0)):
+                for _dy in range(0, abs(y-y0)):                                                                                                                                                                                                                                                                                                 
                     y1 = y0+_dy if y > y0 else y0-_dy
                     plannar_grid = set_grid(plannar_grid,x1,y1)
             else:
@@ -77,7 +77,7 @@ def main():
 
         # print(np.all(floor_grid[55:80, 0:10] == 0))
         #print(floor_grid[55:80, 0:10] )
-        # print(floor_grid)
+        #print(floor_grid)
         # plt.imshow(floor_grid, origin='lower')
         # plt.show()
         
@@ -93,6 +93,9 @@ def main():
                 move_speed.deinit()
         else:
             fc.stop()
+            print(floor_grid)
+            plt.imshow(floor_grid, origin='lower')
+            plt.show()
     
     fc.stop()                             
 
